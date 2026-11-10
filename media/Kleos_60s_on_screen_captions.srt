@@ -1,0 +1,59 @@
+1
+00:00:00,400 --> 00:00:05,700
+“I want to make a game.”
+
+2
+00:00:06,100 --> 00:00:09,700
+A big goal. Clear next steps.
+
+3
+00:00:09,700 --> 00:00:13,800
+A path that grows with you.
+
+4
+00:00:14,100 --> 00:00:17,800
+Start with one small Python task.
+
+5
+00:00:17,800 --> 00:00:21,200
+Then add a new rule.
+
+6
+00:00:21,200 --> 00:00:24,800
+Each task builds on the last.
+
+7
+00:00:25,100 --> 00:00:28,800
+A real attempt reveals a real gap.
+
+8
+00:00:28,800 --> 00:00:32,800
+A useful hint. Your own solution.
+
+9
+00:00:32,800 --> 00:00:36,800
+Change it. Test it. Explain it.
+
+10
+00:00:37,100 --> 00:00:41,000
+Ready? The next challenge goes deeper.
+
+11
+00:00:41,000 --> 00:00:44,300
+More rules. More complexity.
+
+12
+00:00:44,300 --> 00:00:46,900
+More decisions of your own.
+
+13
+00:00:47,100 --> 00:00:51,800
+A new task. Without hints.
+
+14
+00:00:52,000 --> 00:00:55,800
+Keep your work — and the evidence.
+
+15
+00:00:56,000 --> 00:00:59,900
+Build the skills to answer it yourself.
