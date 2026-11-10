@@ -45,7 +45,7 @@ npm run typecheck
 npm run build
 ```
 
-Drizzle schema: `worker/schema.ts`. Generated, immutable migrations: `migrations/`. No request-time DDL. `npm run db:generate` appends a schema migration. Local data stays in ignored `.wrangler/`; production uses separate provisioned D1/R2 bindings.
+Drizzle schema: `worker/schema.ts`. Generated, immutable migrations: `drizzle/`. No request-time DDL. `npm run db:generate` appends a schema migration. Local data stays in ignored `.wrangler/`; production uses separate provisioned D1/R2 bindings.
 
 Build produces a Cloudflare Worker at `dist/server/index.js`, client assets in `dist/client`, and deployment metadata under `dist/.openai`. The Site remains private by default. GitHub stores source, not production learning data, user uploads, secrets or runtime state.
 

@@ -27,13 +27,14 @@ config.assets = { ...config.assets, directory: "../client" };
 config.upload_source_maps = false;
 config.d1_databases = (config.d1_databases || []).map((b) => ({
   ...b,
-  migrations_dir: "../migrations",
+  migrations_dir: "../drizzle",
 }));
 writeFileSync("dist/server/wrangler.json", JSON.stringify(config, null, 2));
 rmSync(join("dist", workerDir), { recursive: true });
 mkdirSync("dist/.openai", { recursive: true });
 cpSync(".openai/hosting.json", "dist/.openai/hosting.json");
-cpSync("migrations", "dist/migrations", { recursive: true });
+cpSync("drizzle", "dist/drizzle", { recursive: true });
+cpSync("drizzle", "dist/server/drizzle", { recursive: true });
 const server = readFileSync("dist/server/index.js", "utf8");
 if (server.includes("local-development-learner"))
   throw new Error("Development identity leaked into production build");

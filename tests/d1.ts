@@ -3,10 +3,10 @@ import { readFileSync, readdirSync } from "node:fs";
 export function database() {
   const db = new DatabaseSync(":memory:");
   db.exec("PRAGMA foreign_keys=ON");
-  for (const f of readdirSync("migrations")
+  for (const f of readdirSync("drizzle")
     .filter((f) => f.endsWith(".sql"))
     .sort())
-    db.exec(readFileSync("migrations/" + f, "utf8"));
+    db.exec(readFileSync("drizzle/" + f, "utf8"));
   const prepare = (sql: string, args: any[] = []) => ({
     bind(...a: any[]) {
       return prepare(sql, a);
