@@ -74,7 +74,6 @@ export function Workspace() {
     [taskEditor, setTaskEditor] = useState(false),
     [history, setHistory] = useState(false),
     [external, setExternal] = useState(false),
-    [ide, setIde] = useState(false),
     [reflection, setReflection] = useState(false);
   const tasks = bundle?.tasks || [],
     task = tasks.find((t: R) => t.id === taskId) || tasks[0],
@@ -343,6 +342,23 @@ export function Workspace() {
                 <Plus size={20} />
               </button>
             </div>
+          </div>
+          <div className="journey-context">
+            <span>
+              GOAL <strong>{bundle.goal.title}</strong>
+            </span>
+            <ChevronRight size={13} />
+            <span>
+              PROJECT{" "}
+              <strong>
+                {bundle.projects?.find((p: R) => p.id === task.project_id)
+                  ?.title || "Your practical project"}
+              </strong>
+            </span>
+            <ChevronRight size={13} />
+            <span>
+              TASK <strong>{task.title}</strong>
+            </span>
           </div>
           <div className="workspace-layout">
             <section className="work-main">
@@ -988,21 +1004,6 @@ export function Workspace() {
       {reflection && task && (
         <Reflection task={task} onClose={() => setReflection(false)} />
       )}{" "}
-      {ide && task && (
-        <IdeConnect
-          task={task}
-          onClose={() => setIde(false)}
-          onImport={(source: string) => {
-            change(setContent, source);
-            setKind("code");
-            setTab("work");
-            setIde(false);
-            toast(
-              "Your chosen code snapshot is in your draft. Save it before asking for guidance.",
-            );
-          }}
-        />
-      )}
     </>
   );
 }
@@ -1579,205 +1580,6 @@ function Reflection({ task, onClose }: { task: R; onClose: () => void }) {
           </Button>
         </div>
       </form>
-    </Modal>
-  );
-}
-function IdeConnect({
-  task,
-  onClose,
-  onImport,
-}: {
-  task: R;
-  onClose: () => void;
-  onImport: (s: string) => void;
-}) {
-  const [code, setCode] = useState(""),
-    [files, setFiles] = useState<R[]>([]),
-    [chosen, setChosen] = useState<string[]>([]),
-    [error, setError] = useState(""),
-    [working, setWorking] = useState(false),
-    [connected, setConnected] = useState(false);
-  const [info, setInfo] = useState<R | null>(null);
-  async function local(path: string, body?: R) {
-    const r = await fetch("http://127.0.0.1:8765" + path, {
-      method: body ? "POST" : "GET",
-      headers: {
-        Authorization: "Bearer " + code.trim(),
-        ...(body ? { "Content-Type": "application/json" } : {}),
-      },
-      body: body ? JSON.stringify(body) : undefined,
-      signal: AbortSignal.timeout(8000),
-    });
-    const d: any = await r.json();
-    if (!r.ok)
-      throw new Error(
-        d.error || "The local workspace could not complete this action.",
-      );
-    return d;
-  }
-  return (
-    <Modal
-      title="Learn with the code you’re really writing."
-      subtitle="Connect a local PyCharm, VS Code or terminal project. You choose the files; nothing is imported automatically."
-      onClose={onClose}
-      wide
-    >
-      <div className="ide-intro">
-        <span>
-          <Terminal size={27} />
-        </span>
-        <div>
-          <h3>Your IDE. Your project. Your control.</h3>
-          <p>
-            The companion reads supported source files inside the folder you
-            choose. It cannot run code, install packages or access files outside
-            that folder.
-          </p>
-        </div>
-      </div>
-      <ol className="setup-steps">
-        <li>
-          <strong>Download the local companion</strong>
-          <a className="text-btn" href="/kleos_bridge.py" download>
-            kleos_bridge.py <Download size={14} />
-          </a>
-          <small>No extra Python packages required. Python 3.10+.</small>
-        </li>
-        <li>
-          <strong>Start it in your chosen project</strong>
-          <code>
-            python kleos_bridge.py --root /path/to/project --origin{" "}
-            {location.origin}
-          </code>
-          <small>
-            In PyCharm, run it in Terminal or configure it as an External Tool.
-            A temporary pairing code is printed locally.
-          </small>
-        </li>
-        <li>
-          <strong>Pair this browser session</strong>
-          <div className="pairing-row">
-            <input
-              aria-label="Local IDE pairing code"
-              type="password"
-              autoComplete="off"
-              placeholder="Paste the code from your local terminal"
-              value={code}
-              onChange={(e) => setCode(e.target.value)}
-            />
-            <Button
-              disabled={!code.trim() || working}
-              onClick={async () => {
-                setWorking(true);
-                setError("");
-                try {
-                  const d = await local("/files");
-                  setFiles(d.files);
-                  setInfo(d);
-                  setConnected(true);
-                } catch (e) {
-                  setError(
-                    (e as Error).message +
-                      " Make sure the companion is running. Your browser may ask for local-network access.",
-                  );
-                } finally {
-                  setWorking(false);
-                }
-              }}
-            >
-              <Plug size={16} />
-              Connect
-            </Button>
-          </div>
-        </li>
-      </ol>
-      {error && (
-        <div className="error-banner">
-          <AlertCircle size={18} />
-          <p>{error}</p>
-        </div>
-      )}
-      {connected && (
-        <>
-          <div className="connection-row">
-            <span className="connection-dot ready" />
-            <strong>{info?.project || "Local project"} is connected</strong>
-            <Badge tone="teal">Loopback only</Badge>
-          </div>
-          <div className="ide-files">
-            {files.length ? (
-              files.map((f) => (
-                <label className="check-label" key={f.path}>
-                  <input
-                    type="checkbox"
-                    checked={chosen.includes(f.path)}
-                    onChange={(e) =>
-                      setChosen(
-                        e.target.checked
-                          ? [...chosen, f.path]
-                          : chosen.filter((x) => x !== f.path),
-                      )
-                    }
-                  />
-                  <FileCode2 size={16} />
-                  <strong>{f.path}</strong>
-                  <small>{bytes(f.size)}</small>
-                </label>
-              ))
-            ) : (
-              <p>No supported source files found in the selected folder.</p>
-            )}
-          </div>
-          <div className="modal-actions">
-            <Button
-              variant="secondary"
-              onClick={async () => {
-                setError("");
-                try {
-                  await local("/task", {
-                    task: {
-                      id: task.id,
-                      title: task.title,
-                      spec: parse(task.spec),
-                    },
-                  });
-                } catch (e) {
-                  setError((e as Error).message);
-                }
-              }}
-            >
-              Save this task to my project
-            </Button>
-            <Button
-              disabled={!chosen.length || working}
-              onClick={async () => {
-                setWorking(true);
-                setError("");
-                try {
-                  const d = await local("/snapshot", { paths: chosen });
-                  onImport(
-                    d.files
-                      .map((f: R) => "# File: " + f.path + "\n" + f.content)
-                      .join("\n\n"),
-                  );
-                } catch (e) {
-                  setError((e as Error).message);
-                } finally {
-                  setWorking(false);
-                }
-              }}
-            >
-              Import selected snapshot <ArrowRight size={16} />
-            </Button>
-          </div>
-        </>
-      )}
-      <p className="small-text">
-        Your pairing code stays in memory for this dialog and is never sent to
-        the Kleos server. Importing a snapshot adds the selected code to your
-        task draft; you can review it before saving or requesting AI guidance.
-        Hosted code execution is not configured.
-      </p>
     </Modal>
   );
 }

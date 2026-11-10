@@ -4367,3 +4367,46 @@ td {
     scroll-behavior: auto !important;
   }
 }
+.journey-context {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  font-size: 7px;
+  letter-spacing: 1px;
+  color: #9cad8c;
+  border-top: 1px solid #e3ead9;
+  padding: 17px 0;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+.journey-context span {
+  max-width: 31%;
+  min-width: 100px;
+}
+.journey-context strong {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0;
+  font-weight: 450;
+  margin-top: 5px;
+  color: #7e926d;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@media (max-width: 700px) {
+  .journey-context {
+    gap: 8px;
+    font-size: 6px;
+  }
+  .journey-context span {
+    min-width: 85px;
+    max-width: 28%;
+  }
+  .journey-context strong {
+    font-size: 8px;
+  }
+  .journey-context svg {
+    width: 10px;
+  }
+}

@@ -433,6 +433,11 @@ describe("Kleos learning platform", () => {
     await call("/api/bootstrap");
     await call("/api/demos/python", "POST", {});
     const p = (await call("/api/bootstrap")).portfolio[0];
+    const detail = await call("/api/portfolio/" + p.id);
+    expect(detail.content).toContain("def summarize");
+    expect(
+      (await request("/api/portfolio/" + p.id, "GET", undefined, "bob")).status,
+    ).toBe(404);
     const share = await call("/api/portfolio/" + p.id, "PATCH", {
       visibility: "shared",
     });
