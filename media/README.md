@@ -5,3 +5,5 @@
 The revised version has natural-speed English narration, verbatim synchronized captions, and closer framing with subtitles inside the picture. The closing brand name is spelled Kleos.
 
 [English subtitles](Kleos_60s_v2.srt)
+
+[Download the pitch deck with the updated demo embedded](../presentations/Kleos_Pitch_Updated_Demo.pptx)
