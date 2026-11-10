@@ -1,0 +1,34 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1794300510065,
+      "tag": "0000_empty_betty_ross",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1794300600750,
+      "tag": "0001_secret_millenium_guard",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1794302239701,
+      "tag": "0002_salty_katie_power",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1794303103896,
+      "tag": "0003_adorable_callisto",
+      "breakpoints": true
+    }
+  ]
+}

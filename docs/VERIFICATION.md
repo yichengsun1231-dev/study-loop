@@ -1,0 +1,10 @@
+# Executed verification
+
+- Read the complete ten-page PDF and explicit brief; mapped requirements before implementation. No existing code was present in the accessible study-loop repository.
+- Generated/applied local D1 schema migrations. Test adapter executes the same SQL against real in-memory SQLite with foreign keys enabled; no mocked persistence.
+- `npm test`: 14 passing integration/domain tests. Coverage includes identity, cross-origin denial, resource ownership, goal optimistic versions, DAG cycles, draft/submission immutability, manual path/task/reflection/portfolio persistence, missing AI configuration, three idempotent labelled demos with no skill/stat inflation, the complete AI workflow with TEST-ONLY model outputs, invalid evidence, failed action quota recovery, idempotency/quota enforcement, admin denial, reported mentor identity boundaries, revocable sharing, owner-only export/deletion, real Stripe HMAC signature validation, tamper rejection and replay idempotency.
+- `npm run build`: TypeScript check and Vite/Cloudflare production build passed. Packaging verifies the Worker and client entrypoint, removes local secret files and source maps from the release, and rejects a production bundle containing the development identity.
+- Local preview was attempted through the required sites-preview daemon. An initial unwritable Cloudflare registry directory was addressed with checkout-local development config/log paths. The next attempt failed at the environment's browser relay: `relay could not open browser port 4173: timed out waiting for relay readiness`. No alternative listener or routing bypass was started. Browser interaction/responsive screenshot QA remains unverified at this point.
+- No live OpenAI calls or real Stripe checkout/subscription tests ran because their credentials were not supplied. Test-only fixture responses are not shipped as the real Agent. The three user-facing demos are explicitly labelled scripted illustrative scenarios.
+
+Native deployment and GitHub verification are recorded in the final delivery after their returned states are observed.
