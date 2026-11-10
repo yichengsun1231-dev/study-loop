@@ -1,59 +1,51 @@
 1
-00:00:00,400 --> 00:00:05,700
-“I want to make a game.”
+00:00:00,805 --> 00:00:02,010
+I want to make a game.
 
 2
-00:00:06,100 --> 00:00:09,700
-A big goal. Clear next steps.
+00:00:06,335 --> 00:00:10,650
+Kleos turns that goal into small steps that build on each other.
 
 3
-00:00:09,700 --> 00:00:13,800
-A path that grows with you.
+00:00:14,200 --> 00:00:16,650
+First, handle one guess in Python.
 
 4
-00:00:14,100 --> 00:00:17,800
-Start with one small Python task.
+00:00:17,975 --> 00:00:20,180
+Then add a loop for repeated turns.
 
 5
-00:00:17,800 --> 00:00:21,200
-Then add a new rule.
+00:00:21,405 --> 00:00:23,610
+Next, put your logic into functions.
 
 6
-00:00:21,200 --> 00:00:24,800
-Each task builds on the last.
+00:00:25,300 --> 00:00:27,770
+Stuck? Kleos helps you find the gap.
 
 7
-00:00:25,100 --> 00:00:28,800
-A real attempt reveals a real gap.
+00:00:29,055 --> 00:00:31,050
+You make the change and test it.
 
 8
-00:00:28,800 --> 00:00:32,800
-A useful hint. Your own solution.
+00:00:33,005 --> 00:00:35,720
+Explain why it works. See your progress.
 
 9
-00:00:32,800 --> 00:00:36,800
-Change it. Test it. Explain it.
+00:00:37,305 --> 00:00:39,470
+Now try new rules and harder challenges.
 
 10
-00:00:37,100 --> 00:00:41,000
-Ready? The next challenge goes deeper.
+00:00:42,265 --> 00:00:44,710
+Practice what is missing. Move on when ready.
 
 11
-00:00:41,000 --> 00:00:44,300
-More rules. More complexity.
+00:00:47,300 --> 00:00:49,760
+Finally, solve a fresh challenge without hints.
 
 12
-00:00:44,300 --> 00:00:46,900
-More decisions of your own.
+00:00:52,235 --> 00:00:54,760
+Keep your work, and the evidence of your skills.
 
 13
-00:00:47,100 --> 00:00:51,800
-A new task. Without hints.
-
-14
-00:00:52,000 --> 00:00:55,800
-Keep your work — and the evidence.
-
-15
-00:00:56,000 --> 00:00:59,900
-Build the skills to answer it yourself.
+00:00:56,255 --> 00:00:58,850
+Kleos. Build the skills to answer it yourself.
